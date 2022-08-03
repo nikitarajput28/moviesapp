@@ -1,17 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router,  Route} from "react-router-dom";
+import { Switch } from "react-router-dom/cjs/react-router-dom.min"
+import Customers from './components/Customers';
+import Navbar from './components/Navbar';
+import Rentals from './components/Rentals';
+import Login from './components/Login';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(
+  <Router>
+    <Navbar/>
+    <Switch>
+    <Route path="/customers">
+    <Customers/>
+    </Route>
+
+    <Route path="/rentals">
+    <Rentals/>
+    </Route>
+
+    <Route path="/login">
+    <Login/>
+    </Route>
+
+    <Route  exact path="/">
+    <App/>
+    </Route>
+
+    </Switch>
+
+
+    
+
+
+  </Router>,
+  document.getElementById('root')
+  );
+
+
